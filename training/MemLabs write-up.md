@@ -134,7 +134,7 @@ if __name__ == "__main__":
 
 	f.close()
 ```
-The script is quite easy to read, it takes the content, xor it with 3, and encode it to base64 and write it to "vip.txt", so to decode it we just need to reverse the process. Here I used CyberChef to cook it a lil' bit and got the first half of the flag
+The script is quite easy to read, it takes the content, xor encrypt it with the key "3", and encode it to base64 and write it to "vip.txt", so to decode it we just need to reverse the process. Here I used CyberChef to cook it a lil' bit and got the first half of the flag
 >inctf{0n3_h4lf
 
 Back to the suspision1.jpeg, as the description said we need steghide, and need first half to solve the other, so I assumed that the first half is the passphrase, to extract the content from the jpeg file. And we got the other half
