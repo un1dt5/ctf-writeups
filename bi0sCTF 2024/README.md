@@ -13,7 +13,6 @@ All epoch times should be converted to IST (UTC + 5:30).
 All other timestamps are to be taken as it is from artifacts.
 
 ### Solution
-Got a .ad1 file, I used FTK Imager to analyse it.
 
 #### Q1) What is the serial number of the sandisk usb that he plugged into the system? And when did he plug it into the system?
 Format: verboten{serial_number:YYYY-MM-DD-HH-MM-SS}
