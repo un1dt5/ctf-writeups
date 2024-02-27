@@ -125,7 +125,7 @@ I found [this blog](https://www.inversecos.com/2022/05/how-to-perform-clipboard-
 
 ![image](https://hackmd.io/_uploads/r1UNrP536.png)
 
-However, the tricky part was the "single use code" was copied multiple times, make it hard to find the answer, so I just tried all of them. Copy the epoch time and convert it to IST. Take quite much time but I finally got the correct answer. (epoch: 1708106083)
+However, the tricky part was that the "single use code" was copied multiple times, make it harder to find the answer, so I just tried all of the time stamps. Copy the epoch time and convert it to IST. Take quite much time but I finally got the correct answer. (epoch: 1708106083)
 Answer:
 >verboten{830030:2024-02-16-23-24-43}
 
