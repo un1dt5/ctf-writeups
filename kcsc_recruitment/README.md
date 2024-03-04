@@ -23,8 +23,6 @@ Done!
 Flag:
  >KCSC{Ch40`_M|_|n9`_D3N'_V01'_77\/_KCSC}
 
-~~bruh why is it formatted like that~~
-
 ## _VBS (Forensic)_
 
 ![vbs1](vbs1.png)
@@ -188,8 +186,6 @@ Lần theo dấu vết của azai buồn ta tìm thấy file được copy vào 
 > Answer: YW5obGFuZ2NvYw.bat
 
 Question 5: What is the MD5 hash of a connect-back shell file? (for example: d41d8cd98f00b204e9800998ecf8427e)
-
-~~Tới câu này em thành sadboy luôn~~
 
 Trong câu hỏi nói tới connect-back shell file là file shell để gửi remote command, tìm trong PowerShell Operational log đã thấy file rshell.ps1 (rất sure là nó rồi), giờ phải build lại file tương tự để check md5
 
