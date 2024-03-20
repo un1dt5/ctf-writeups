@@ -607,8 +607,11 @@ Flag: `HTB{c0mmun1c4710n5_h45_b33n_r3570r3d_1n_7h3_h34dqu4r73r5}`
 ## _Confinement_
 Bài cho file .ad, mình dùng FTK Imager để phân tích
 Mục tiêu của bài này là khôi phục lại file bị ransomware mã hóa để lấy flag. Đầu tiên mình tìm trong các thư mục thường gặp để tìm file con ransomware nhưng không thấy. Chuyển qua đọc chay log event thì cũng chỉ tìm được thông tin file `intel.exe` đã được extract ra bằng 7z, sau đó thì xóa hết luôn. ~~sadge~~
-Thôi đi tìm tool, ~~đọc hết chỗ log kia ốm luôn~~. Thì mình tìm được cái này
+
+Thôi đi tìm tool ~~đọc chay hết chỗ log kia ốm luôn~~. Thì mình tìm được cái này
+
 [![HAYABUSA](https://hackmd.io/_uploads/Sy9dmqvAp.jpg)](https://github.com/Yamato-Security/hayabusa)
+
 Và cái này
 https://thesecuritynoob.com/dfir-tools/dfir-tools-timeline-explorer-what-is-it-how-to-use/
 
