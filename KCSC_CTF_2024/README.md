@@ -341,7 +341,7 @@ Hàm `EncryptFile` thực hiện encrypt những file trên bằng publicKey
 
 ![image](https://hackmd.io/_uploads/BJB3mUGQA.png)
 
-Hàm `sub_huozi` tìm độ lệch giữa thời gian tạo file `main_background.jpg` và 01/01/1970 00:00:00, sau đó lấy hashCode cùng với **privateKey** chuyển qua cho hàm `sub_bqm` xor, rồi lại chuyển tiếp qua hàm `sub_bẹn` nối vào file `main_background.jpg`. Vậy chính file `main_background.jpg` sẽ giúp ta lấy lại được privateKey để giải mã file.
+Hàm `sub_huozi` tìm độ lệch giữa thời gian tạo file `main_background.jpg` và 01/01/1970 00:00:00, sau đó lấy hashCode cùng với **privateKey** chuyển qua cho hàm `sub_bqm` xor, rồi lại chuyển tiếp qua hàm `sub_benj` nối vào file `main_background.jpg`. Vậy chính file `main_background.jpg` sẽ giúp ta lấy lại được privateKey để giải mã file.
 
 ![image](https://hackmd.io/_uploads/B1vG4Uf70.png)
 
