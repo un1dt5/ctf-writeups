@@ -248,5 +248,5 @@ Flag: `KCSC{I_@m_daStomp_dat_1z_4Ppr0/\ch1n9!}`
 
 ![image](https://hackmd.io/_uploads/Sy3ZFWWQ0.png)
 
-# Note:
-Trước khi giải start e ngủ đc 3 tiếng + nốc redbull + t2 học thể chất :)) nên giờ vẫn còn đuối chưa làm nốt bài cuối được, khi nào xong e thêm vào sau.
+## _Toikhongbietdieudo_
+updating
