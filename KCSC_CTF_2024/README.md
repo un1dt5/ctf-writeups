@@ -249,4 +249,197 @@ Flag: `KCSC{I_@m_daStomp_dat_1z_4Ppr0/\ch1n9!}`
 ![image](https://hackmd.io/_uploads/Sy3ZFWWQ0.png)
 
 ## _Toikhongbietdieudo_
-updating
+Bài cuối, let's go!
+> My friend opened an image he downloaded from a link sent by a stranger and saw nothing. Then all his important files had been encrypted after rebooting his machine. To the best of your ability, answer the questions below and help us recover all encrypted files!
+> 
+> What is the mitre ID of the technique that the adversary used to gain persistence? Ex: T1098
+> 
+> What is the name of the loader? Ex: hentailoli.exe
+> 
+> There is a flag inside the encrypted file, decrypt it and get back the flag! What is the content of the flag? Ex: the_w0rld_sh4ll_know_pain
+> 
+> Wrap flag with format.
+> 
+> Flag format: KCSC{answer1_answer2_answer3}
+> 
+> Download
+> 
+> Author: yobdas
+
+Bài cho ta 1 file tên "toikhongbietdieudo.ad1", mình kết hợp sử dụng FTK Imager và Autopsy để phân tích case này. Nhiệm vụ là tìm ra kỹ thuật đã được sử dụng để malware persist trên máy, phân tích malware này và giải mã file lấy flag. 
+
+Đầu tiên mình kiểm tra Recents Documents trong Autopsy, và thấy rằng NTUSER.DAT đã bị truy cập bất thường trên máy. Sau đó mình tìm trong Web Download được lịch sử tải về của 1 file tên `sechcollection.zip`
+
+![image](https://hackmd.io/_uploads/ryzP28M7C.png)
+
+![image](https://hackmd.io/_uploads/SyLuPrGQA.png)
+
+Tuy nhiên file đã bị xóa, link tải về cũng không còn truy cập được. Kiểm tra thêm mục Run Programs với mốc thời gian gần với lịch sử tải về mình tìm được quả `HINHSECH.PNG.EXE` ~~nhin uy tin vcl~~ và `REG.EXE`, `REGEDIT.EXE` đã xuất hiện cùng lúc khi các file này chạy.
+
+![image](https://hackmd.io/_uploads/Bk6RwSzm0.png)
+
+Sau đó 1 thời gian ngắn thì 1 con `NOTEṖAD.EXE` xuất hiện, ừ đúng rồi notepad.exe bị dị dạng chứ không phải do màn hình bẩn :D
+
+![image](https://hackmd.io/_uploads/r1xfuBfm0.png)
+
+Sau khi tìm hiểu, đây là kỹ thuật [Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder](https://attack.mitre.org/techniques/T1547/001/) khi attacker lợi dụng một số registry/folder của Windows cho phép setting phần mềm khởi động cùng hệ thống, cụ thể trong trường hợp này nằm ở `HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Windows\load`
+
+Từ đấy ta có được Mitre ID là `T1547.001` và tên loader là `noteṗad.exe`
+
+![image](https://hackmd.io/_uploads/BkkHhHzmR.png)
+
+
+Một số nơi trong Registry mà có thể setting phần mềm khởi động cùng hệ thống:
+> 
+> HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+> 
+> HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce
+> 
+> HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnceEx
+> 
+> HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Windows\run
+> 
+> HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Windows\load
+> 
+> HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+> 
+> HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce
+> 
+> HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnceEx
+
+Bây giờ thì lôi con `noteṗad.exe` ra để phân tích thôi
+
+![image](https://hackmd.io/_uploads/H1tTarGX0.png)
+
+Kiểm tra bằng IDA ta thấy nó load tiếp `ntrdll.dll` lên để chạy, nó cũng nằm trong `System32`
+
+![image](https://hackmd.io/_uploads/Hy7Y0BzQC.png)
+
+![image](https://hackmd.io/_uploads/SJQTRBMQC.png)
+
+Có rất nhiều decompiler có thể sử dụng để phân tích file .NET. Ở đây mình sử dụng ILSpy để phân tích.
+
+![image](https://hackmd.io/_uploads/S1eyg8M7A.png)
+
+Hàm `sub_novabeu` là hàm tạo cặp publicKey và privateKey
+
+![image](https://hackmd.io/_uploads/rk_X-UMX0.png)
+
+Sau đó chuyển cho `sub_gnoah` gửi privateKey về server attacker
+
+![image](https://hackmd.io/_uploads/BJnrbUMm0.png)
+
+Hàm `sub_94502041501` kiểm tra tên máy nếu trùng với `DESKTOP-CH40M84` thì sẽ tiến hành encrypt folder
+
+![image](https://hackmd.io/_uploads/r1i5WUzQC.png)
+
+Hàm `EncryptDirectory` chỉ định những file có extesion nhất định trong folder sẽ bị encrypt, trừ 1 file có tên `main_background.jpg`
+
+![image](https://hackmd.io/_uploads/HkPEfLM7R.png)
+
+Hàm `EncryptFile` thực hiện encrypt những file trên bằng publicKey
+
+![image](https://hackmd.io/_uploads/BJB3mUGQA.png)
+
+Hàm `sub_huozi` tìm độ lệch giữa thời gian tạo file `main_background.jpg` và 01/01/1970 00:00:00, sau đó lấy hashCode cùng với **privateKey** chuyển qua cho hàm `sub_bqm` xor, rồi lại chuyển tiếp qua hàm `sub_bẹn` nối vào file `main_background.jpg`. Vậy chính file `main_background.jpg` sẽ giúp ta lấy lại được privateKey để giải mã file.
+
+![image](https://hackmd.io/_uploads/B1vG4Uf70.png)
+
+![image](https://hackmd.io/_uploads/S1nsrIz7C.png)
+
+![image](https://hackmd.io/_uploads/BJppS8zmA.png)
+
+File `.jpg` luôn kết thúc với đuôi `FF D9`, tức là tất cả phần còn lại ta lấy ra đem xor lại với hashCode trên sẽ lấy được privateKey.
+
+![image](https://hackmd.io/_uploads/rkop28zm0.png)
+
+Đây là code C# mình dùng để khôi phục lại privateKey
+
+```
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        sub_huozi();
+    }
+
+    private static void sub_huozi()
+    {
+      byte[] enc = File.ReadAllBytes("D:\\Trash\\kcsctf\\test\\encrypted.txt");
+      string pic = "D:\\Trash\\kcsctf\\test\\main_background.jpg";
+      int hashCode = ((long) (File.GetCreationTime(pic) - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Local)).TotalSeconds).ToString().GetHashCode();
+      Console.WriteLine(hashCode);
+      byte[] bytes1 = BitConverter.GetBytes(hashCode);
+      for (int index = 0; index < enc.Length; ++index)
+        enc[index] ^= bytes1[index % bytes1.Length];
+      File.WriteAllBytes("D:\\Trash\\kcsctf\\test\\decrypted.txt", enc);
+    }
+}
+```
+
+![image](https://hackmd.io/_uploads/HyHTuUfmR.png)
+
+Giờ thì viết code decrypt file thôi
+```
+using System;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
+
+class Program
+{
+    private static void DecryptFile(string encryptedFilePath, string privateKeyXml)
+    {
+        using (RSACryptoServiceProvider rSACryptoServiceProvider = new RSACryptoServiceProvider())
+        {
+            try
+            {
+                rSACryptoServiceProvider.FromXmlString(privateKeyXml);
+
+                byte[] encryptedData = File.ReadAllBytes(encryptedFilePath);
+                int blockSize = rSACryptoServiceProvider.KeySize / 8;
+                using (MemoryStream decryptedStream = new MemoryStream())
+                {
+                    for (int i = 0; i < encryptedData.Length; i += blockSize)
+                    {
+                        byte[] encryptedBlock = new byte[blockSize];
+                        Array.Copy(encryptedData, i, encryptedBlock, 0, blockSize);
+                        byte[] decryptedBlock = rSACryptoServiceProvider.Decrypt(encryptedBlock, true);
+                        decryptedStream.Write(decryptedBlock, 0, decryptedBlock.Length);
+                    }
+
+                    string originalFilePath = encryptedFilePath.Replace(".KCSC", "");
+                    File.WriteAllBytes(originalFilePath, decryptedStream.ToArray());
+                }
+            }
+            catch (CryptographicException e)
+            {
+                Console.WriteLine("A cryptographic error occurred: {0}", e.Message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("An error occurred: {0}", e.Message);
+            }
+        }
+    }
+
+    static void Main()
+    {
+        string encryptedFilePath = "Path/to/encrypted/file.KCSC";
+        string privateKeyXml = "<RSAKeyValue>---</RSAKeyValue>"; //privateKey hể
+
+        DecryptFile(encryptedFilePath, privateKeyXml);
+    }
+}
+```
+Flag nằm trong file `danhsachsv.xlsx`. Khá là khắm khi Office 2010 không mở được file đã decrypt, mình thử ném lên Drive thì lại mở được :Đ, và lấy được phần flag cuối
+
+![image](https://hackmd.io/_uploads/rk-E5Lz7A.png)
+
+Flag: `KCSC{T1547.001_noteṗad.exe_nho_lau_sach_man_hinh_truoc_khi_choi_ctf_ban_nhe_xxxnxx}`
+
+## _Tổng kết_
+Sau giải này em học được thêm khá là nhiều kiến thức mới, có điều hôm trước khi thi em ngủ được có 3 tiếng nên hôm thi hơi đuối, bài cuối phải để hết giải mới làm được. Xin cảm ơn mọi người đã đọc bài ạ.
