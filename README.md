@@ -1,1 +1,1 @@
-Write-ups for CTFs and stuff
+Writeups for CTFs and stuff
