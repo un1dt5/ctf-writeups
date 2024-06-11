@@ -216,12 +216,11 @@ Tiếp tục sort log tìm lệnh attacker đã dùng, tìm thấy "net user /do
 > Answer: administrator
 
 ![log9](log9.png)
+
 Flag:
 `KCSC{521f1068aee21539b0cb5ea74883018b}`
 
 ## _Physical Hacker (Forensic)_
-
-~~Lẽ ra e phải làm bài này từ đầu 😭~~
 
 ![ph0](ph0.png)
 
@@ -284,12 +283,9 @@ Question 8: What content has been recorded by the malware?
 Chạy `python3 vol.py -f /home/kali/volatility3/DUMP windows.filescan | grep LICENSE.txt`, tìm được file rồi dump ra đọc `python3 vol.py -f /home/kali/volatility3/DUMP -o /home/kali/Desktop windows.dumpfiles --virtaddr 0x9d01eb04cb00`, ta có được nội dung keylog
 >Answer: In carnage, i bloom, like a flower in the dawn.
 
-~~hat tung di Jhin~~
-
 Và ta có flag
 
 ![ph4](ph4.png)
-
 ~~dung quen dau phay~~
 
 `KCSC{Furube_yura_yura_Yatsuka_no_tsurugi_ikaishinshou_Makora}`
