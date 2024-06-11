@@ -130,7 +130,7 @@ Found it!
 
 ![ez3](ez3.png)
 
-Flag
+Flag:
 `KCSC{C3as4r_1s_Cl4ss1c4l_4nd_C00l}`
 
 ## _A gift for pwners (Pwn)_
@@ -144,7 +144,7 @@ Mở bằng Notepad đọc thử và banh mắt ra tìm flag thôi
 
 ![gift1](gift1.png)
 
-Flag
+Flag:
 `KCSC{A_gift_for_the_pwners_0xdeadbeef}`
 
 # Post Ending
@@ -216,7 +216,7 @@ Tiếp tục sort log tìm lệnh attacker đã dùng, tìm thấy "net user /do
 > Answer: administrator
 
 ![log9](log9.png)
-Flag
+Flag:
 `KCSC{521f1068aee21539b0cb5ea74883018b}`
 
 ## _Physical Hacker (Forensic)_
@@ -283,10 +283,13 @@ Question 8: What content has been recorded by the malware?
 
 Chạy `python3 vol.py -f /home/kali/volatility3/DUMP windows.filescan | grep LICENSE.txt`, tìm được file rồi dump ra đọc `python3 vol.py -f /home/kali/volatility3/DUMP -o /home/kali/Desktop windows.dumpfiles --virtaddr 0x9d01eb04cb00`, ta có được nội dung keylog
 >Answer: In carnage, i bloom, like a flower in the dawn.
+
 ~~hat tung di Jhin~~
 
 Và ta có flag
 
 ![ph4](ph4.png)
+
 ~~dung quen dau phay~~
+
 `KCSC{Furube_yura_yura_Yatsuka_no_tsurugi_ikaishinshou_Makora}`
