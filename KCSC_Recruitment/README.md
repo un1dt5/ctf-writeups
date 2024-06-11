@@ -15,13 +15,13 @@ Load IDA lên xem thử nào
 ![Warmup3](Warmup3.png)
 
 Ngay function Main có 1 string trong khá là sú
-> S0NTQ3tDaDQwYF9NfF98bjlgX0QzTidfVjAxJ183N1wvX0tDU0N9
+`S0NTQ3tDaDQwYF9NfF98bjlgX0QzTidfVjAxJ183N1wvX0tDU0N9`
 
 Dùng Base64 Decode và...
 Done!
 
 Flag:
- >KCSC{Ch40`_M|_|n9`_D3N'_V01'_77\/_KCSC}
+``KCSC{Ch40`_M|_|n9`_D3N'_V01'_77\/_KCSC}``
 
 ## _VBS (Forensic)_
 
@@ -47,7 +47,7 @@ Có 1 string encode dạng base64, decode ta được flag
 ![vbs4](vbs4.png)
 
 Flag:
-> KCSC{Vb4_h01_lor""_ae_th0ng_c4m_=(((}
+`KCSC{Vb4_h01_lor""_ae_th0ng_c4m_=(((}`
 
 ## _an-tơ-nây-típ (Forensic)_
 
@@ -79,7 +79,7 @@ Và cho chạy thử trên PowerShell:
 ![ads5](ads5.png)
 
 Và chúng ta có flag:
-> KCSC{B1_@u4n_m4n_1s_7h3_b3st}
+`KCSC{B1_@u4n_m4n_1s_7h3_b3st}`
 
 ~~*Làm xong 2 bài rồi mới đọc Note có thể có malware 💀*~~
 
@@ -110,7 +110,7 @@ Value của trainer_data giống dạng base64
 ![hof4](hof4.png)
 
 Flag:
-> KCSC{n0w_y0u_kn0w_s3r1al1z3_f0m4rt}
+`KCSC{n0w_y0u_kn0w_s3r1al1z3_f0m4rt}`
 
 ## _Ez_Ceasar (Crypto)_
 
@@ -131,7 +131,7 @@ Found it!
 ![ez3](ez3.png)
 
 Flag
-> KCSC{C3as4r_1s_Cl4ss1c4l_4nd_C00l}
+`KCSC{C3as4r_1s_Cl4ss1c4l_4nd_C00l}`
 
 ## _A gift for pwners (Pwn)_
 
@@ -145,7 +145,7 @@ Mở bằng Notepad đọc thử và banh mắt ra tìm flag thôi
 ![gift1](gift1.png)
 
 Flag
-> KCSC{A_gift_for_the_pwners_0xdeadbeef}
+`KCSC{A_gift_for_the_pwners_0xdeadbeef}`
 
 # Post Ending
 ## _ログ分析 (Forensic)_
@@ -217,7 +217,7 @@ Tiếp tục sort log tìm lệnh attacker đã dùng, tìm thấy "net user /do
 
 ![log9](log9.png)
 Flag
-> KCSC{521f1068aee21539b0cb5ea74883018b}
+`KCSC{521f1068aee21539b0cb5ea74883018b}`
 
 ## _Physical Hacker (Forensic)_
 
@@ -289,4 +289,4 @@ Và ta có flag
 
 ![ph4](ph4.png)
 ~~dung quen dau phay~~
-> KCSC{Furube_yura_yura_Yatsuka_no_tsurugi_ikaishinshou_Makora}
+`KCSC{Furube_yura_yura_Yatsuka_no_tsurugi_ikaishinshou_Makora}`
