@@ -94,11 +94,10 @@ Ta trong lịch sử bash thấy tội phạm có dùng docker, lấy docker và
 
 Trong lịch sử bash cho thấy criminal đã sử dụng gpg để encrypt file `credential.txt`, chỉ còn lại `credential.txt.gpg`
 
-Tuy nhiên thì trong lịch sử bash cũng chứa luôn cả đoạn criminal gen password dể dùng luôn :V Và thế là ta có passphrase để giải mã cho file trên, có đáp án cho Q9 và Q10
+Tuy nhiên thì trong lịch sử bash cũng chứa luôn cả đoạn criminal gen password dể dùng luôn :V
+Ta setup lại kdb(libelektra) giống như trong máy của criminal và gen lại passphrase để giải mã cho file trên, có đáp án cho Q9 và Q10
 
 ![image](https://hackmd.io/_uploads/BkcJjaoxye.png)
-
-![image](https://hackmd.io/_uploads/SJXGspslkx.png)
 
 ![image](https://hackmd.io/_uploads/HkL8spie1l.png)
 
@@ -109,3 +108,33 @@ Nội dung đã được decrypt từ Q9
 P/s: Nội dung file credential trên còn bị lưu lại trong file vmdk và có thể bị strings grep ra được luôn (≧▽≦)
 
 ![image](https://hackmd.io/_uploads/HklGA6ilyg.png)
+
+## _Corrupted Hard Drive_
+
+Bài cho 1 file .vhd, dưới đây là toàn bộ câu hỏi và câu trả lời cho bài
+
+```
+[1]. What is the starting address of the LBA address? Format (0xXXXXX)
+0x10000
+[+] Correct!
+[2]. What is the tampered OEM ID? Format (0xXXXXXXXXXXXXXXXX)
+0x4E54460020202020
+[+] Correct!
+[3]. After Fixing the disk, my friend downloaded a file from Google, what is the exact time when he clicked to download that file? Eg: 2024-01-01 01:01:01
+2024-10-22 21:51:13
+[+] Correct!
+[4]. How much time did that file take to for download (in seconds)?? Format  (XXX)
+126
+[+] Correct!
+[5]. The first directory he moved this file to?
+best
+[+] Correct!
+[6]. Last directory the suspicious move the file to?
+MustRead
+[+] Correct!
+[7]. The time he of the deletion?? Eg: 2024-01-01 01:01:01
+2024-10-22 22:20:28
+[+] Correct!
+[+] Congrats! You have successfully completed the test.
+Here's your reward: ISITDTU{https://www.youtube.com/watch?v=yqp61_Wqm-A}
+```
